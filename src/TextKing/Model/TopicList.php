@@ -2,10 +2,10 @@
 
 namespace TextKing\Model;
 
-class LanguageList extends AbstractModelList
+class TopicList extends AbstractModelList
 {
     protected static function getItemClassName()
     {
-        return "Language";
+        return "Topic";
     }
 }

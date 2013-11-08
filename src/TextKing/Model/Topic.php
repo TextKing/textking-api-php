@@ -2,9 +2,9 @@
 
 namespace TextKing\Model;
 
-class Language extends AbstractModel
+class Topic extends AbstractModel
 {
-    public $code;
+    public $id;
 
     public $name;
 
@@ -12,14 +12,14 @@ class Language extends AbstractModel
 
     public static function fromJson($json)
     {
-        return new self((string)$json['code'],
+        return new self((string)$json['id'],
             (string)$json['name'],
             (string)$json['localization_language']);
     }
 
-    public function __construct($code, $name, $localizationLanguage)
+    public function __construct($id, $name, $localizationLanguage)
     {
-        $this->code = $code;
+        $this->id = $id;
         $this->name = $name;
         $this->localizationLanguage = $localizationLanguage;
     }

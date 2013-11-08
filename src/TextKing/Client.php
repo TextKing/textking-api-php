@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: phw
- * Date: 08.11.13
- * Time: 14:18
- */
 
 namespace TextKing;
 

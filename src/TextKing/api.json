@@ -3,6 +3,26 @@
     "apiVersion": "1.0",
     "baseUrl": "https://api.textking.com/v1",
     "operations": {
+        "GetTopics": {
+            "httpMethod": "GET",
+            "uri": "topics",
+            "responseClass": "TextKing\\Model\\TopicList",
+            "additionalParameters": {
+                "per_page": "query",
+                "page": "query"
+            }
+        },
+        "GetTopic": {
+            "httpMethod": "GET",
+            "uri": "topic/{id}",
+            "responseClass": "TextKing\\Model\\Topic",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
         "GetSourceLanguages": {
             "httpMethod": "GET",
             "uri": "languages/source",
@@ -12,7 +32,7 @@
                 "page": "query"
             }
         },
-        "GetSourceLanguages": {
+        "GetTargetLanguages": {
             "httpMethod": "GET",
             "uri": "languages/target",
             "responseClass": "TextKing\\Model\\LanguageList",
