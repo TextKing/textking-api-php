@@ -23,7 +23,7 @@ class Client extends \Guzzle\Service\Client
         $client->setDescription(ServiceDescription::factory(__DIR__ . DIRECTORY_SEPARATOR . 'api.json'));
         $client->setDefaultOption('headers/Accept', 'application/json');
         $client->setDefaultOption('headers/Accept-Language', $config->get('accept_language'));
-        $client->setDefaultOption('headers/Accept-Language', 'Bearer ' . $config->get('access_token'));
+        $client->setDefaultOption('headers/Authorization', 'Bearer ' . $config->get('access_token'));
 
         return $client;
     }
