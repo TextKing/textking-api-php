@@ -1,9 +1,28 @@
 {
     "name": "textking/api",
+    "type": "library",
+    "description": "Library to access the TEXTKING REST API for human translation.",
+    "keywords": ["rest", "web service", "api", "translation"],
+    "license": "MIT",
+    "homepage": "https://www.textking.com/api",
+
+    "authors": [
+        {
+            "name": "TEXTKING Deutschland GmbH",
+            "homepage": "https://www.textking.com"
+        },
+        {
+            "name": "Philipp Wolfer",
+            "email": "philipp.wolfer@textking.com",
+            "homepage": "https://github.com/mtdowling"
+        }
+    ],
+
     "require": {
         "guzzle/guzzle": "~3.7"
     },
+
     "autoload": {
-        "psr-0": {"TextKing\\": "src/"}
+        "psr-0": {"TextKing": "src/"}
     }
 }
