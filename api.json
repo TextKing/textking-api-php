@@ -1,0 +1,36 @@
+{
+    "name": "TEXTKING",
+    "apiVersion": "1.0",
+    "baseUrl": "https://api.textking.com/v1",
+    "operations": {
+        "GetSourceLanguages": {
+            "httpMethod": "GET",
+            "uri": "languages/source",
+            "responseClass": "TextKing\\Model\\LanguageList",
+            "additionalParameters": {
+                "per_page": "query",
+                "page": "query"
+            }
+        },
+        "GetSourceLanguages": {
+            "httpMethod": "GET",
+            "uri": "languages/target",
+            "responseClass": "TextKing\\Model\\LanguageList",
+            "additionalParameters": {
+                "per_page": "query",
+                "page": "query"
+            }
+        },
+        "GetLanguage": {
+            "httpMethod": "GET",
+            "uri": "language/{code}",
+            "responseClass": "TextKing\\Model\\Language",
+            "parameters": {
+                "code": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        }
+    }
+}

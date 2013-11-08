@@ -1,0 +1,6 @@
+{
+    "name": "textking/api",
+    "require": {
+        "guzzle/guzzle": "~3.7"
+    }
+}
