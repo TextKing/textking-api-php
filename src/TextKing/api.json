@@ -28,8 +28,8 @@
             "uri": "projects",
             "responseClass": "TextKing\\Model\\Project",
             "parameters": {
-                "project": {
-                    "location": "json",
+                "body": {
+                    "location": "jsonBody",
                     "required": true
                 }
             }
@@ -43,8 +43,8 @@
                     "location": "uri",
                     "required": true
                 },
-                "project": {
-                    "location": "json",
+                "body": {
+                    "location": "jsonBody",
                     "required": true
                 }
             }

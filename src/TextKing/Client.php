@@ -16,6 +16,10 @@ class Client extends \Guzzle\Service\Client
         $required = array('base_url', 'access_token');
         $config = Collection::fromConfig($config, $default, $required);
 
+        $requestVisitorFactory = \Guzzle\Service\Command\LocationVisitor\VisitorFlyweight::getInstance();
+        $jsonBodyVisitor = new \TextKing\Guzzle\JsonBodyVisitor();
+        $requestVisitorFactory->addRequestVisitor('jsonBody', $jsonBodyVisitor);
+
         $client = new self(
             $config->get('base_url')
         );
