@@ -12,15 +12,10 @@ class Language extends AbstractModel
 
     public static function fromJson($json)
     {
-        return new self((string)$json['code'],
-            (string)$json['name'],
-            (string)$json['localization_language']);
-    }
-
-    public function __construct($code, $name, $localizationLanguage)
-    {
-        $this->code = $code;
-        $this->name = $name;
-        $this->localizationLanguage = $localizationLanguage;
+        $object = new self();
+        $object->code = (string)$json['code'];
+        $object->name = (string)$json['name'];
+        $object->localizationLanguage = (string)$json['localization_language'];
+        return $object;
     }
 }

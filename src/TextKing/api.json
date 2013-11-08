@@ -3,6 +3,63 @@
     "apiVersion": "1.0",
     "baseUrl": "https://api.textking.com/v1",
     "operations": {
+        "GetProjects": {
+            "httpMethod": "GET",
+            "uri": "projects",
+            "responseClass": "TextKing\\Model\\ProjectList",
+            "additionalParameters": {
+                "per_page": "query",
+                "page": "query"
+            }
+        },
+        "GetProject": {
+            "httpMethod": "GET",
+            "uri": "project/{id}",
+            "responseClass": "TextKing\\Model\\Project",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "CreateProject": {
+            "httpMethod": "POST",
+            "uri": "projects",
+            "responseClass": "TextKing\\Model\\Project",
+            "parameters": {
+                "project": {
+                    "location": "json",
+                    "required": true
+                }
+            }
+        },
+        "UpdateProject": {
+            "httpMethod": "PUT",
+            "uri": "project/{id}",
+            "responseClass": "TextKing\\Model\\Project",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "project": {
+                    "location": "json",
+                    "required": true
+                }
+            }
+        },
+        "DeleteProject": {
+            "httpMethod": "DELETE",
+            "uri": "project/{id}",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+
         "GetTopics": {
             "httpMethod": "GET",
             "uri": "topics",
@@ -23,6 +80,7 @@
                 }
             }
         },
+
         "GetSourceLanguages": {
             "httpMethod": "GET",
             "uri": "languages/source",

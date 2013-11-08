@@ -9,19 +9,21 @@ class Client extends \Guzzle\Service\Client
 {
     public static function factory($config = array())
     {
-        $default = array('base_url' => 'https://api.textking.com/v1');
-        $required = array('base_url');
+        $default = array(
+            'base_url' => 'https://api.textking.com/v1',
+            'accept_language' => 'en'
+        );
+        $required = array('base_url', 'access_token');
         $config = Collection::fromConfig($config, $default, $required);
 
         $client = new self(
-            $config->get('base_url'),
-            $config->get('username'),
-            $config->get('api_key')
+            $config->get('base_url')
         );
         $client->setConfig($config);
         $client->setDescription(ServiceDescription::factory(__DIR__ . DIRECTORY_SEPARATOR . 'api.json'));
-        $client->setDefaultOption("headers/Accept", "application/json");
-        $client->setDefaultOption("headers/Accept-Language", "en");
+        $client->setDefaultOption('headers/Accept', 'application/json');
+        $client->setDefaultOption('headers/Accept-Language', $config->get('accept_language'));
+        $client->setDefaultOption('headers/Accept-Language', 'Bearer ' . $config->get('access_token'));
 
         return $client;
     }
