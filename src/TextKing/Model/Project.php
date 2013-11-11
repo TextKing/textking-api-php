@@ -62,7 +62,7 @@ class Project extends AbstractModel implements \Guzzle\Common\ToArrayInterface {
         return array(
             'name' => $this->name,
             'due_date' => $this->dueDate,
-            //'state' => $this->currency,
+            //'state' => $this->state,
             'coupon_name' => $this->couponName,
             'affiliate_id' => $this->affiliateId,
             'billing_address' => $this->billingAddress,

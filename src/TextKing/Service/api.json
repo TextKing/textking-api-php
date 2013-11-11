@@ -3,6 +3,7 @@
     "apiVersion": "1.0",
     "baseUrl": "https://api.textking.com/v1",
     "operations": {
+        /* Projects */
         "GetProjects": {
             "httpMethod": "GET",
             "uri": "projects",
@@ -30,6 +31,8 @@
             "parameters": {
                 "body": {
                     "location": "jsonBody",
+                    "type": "object",
+                    "instanceOf": "TextKing\\Model\\Project",
                     "required": true
                 }
             }
@@ -45,6 +48,8 @@
                 },
                 "body": {
                     "location": "jsonBody",
+                    "type": "object",
+                    "instanceOf": "TextKing\\Model\\Project",
                     "required": true
                 }
             }
@@ -60,6 +65,87 @@
             }
         },
 
+        /* Jobs */
+        "GetJobs": {
+            "httpMethod": "GET",
+            "uri": "project/{projectId}/jobs",
+            "responseClass": "TextKing\\Model\\JobList",
+            "parameters": {
+                "projectId": {
+                    "location": "uri",
+                    "required": true
+                }
+            },
+            "additionalParameters": {
+                "per_page": "query",
+                "page": "query"
+            }
+        },
+        "GetJob": {
+            "httpMethod": "GET",
+            "uri": "project/{projectId}/job/{jobId}",
+            "responseClass": "TextKing\\Model\\Job",
+            "parameters": {
+                "projectId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "jobId": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "CreateJob": {
+            "httpMethod": "POST",
+            "uri": "project/{projectId}/jobs",
+            "responseClass": "TextKing\\Model\\Job",
+            "parameters": {
+                "body": {
+                    "location": "jsonBody",
+                    "type": "object",
+                    "instanceOf": "TextKing\\Model\\Job",
+                    "required": true
+                }
+            }
+        },
+        "UpdateJob": {
+            "httpMethod": "PUT",
+            "uri": "project/{projectId}/job/{jobId}",
+            "responseClass": "TextKing\\Model\\Job",
+            "parameters": {
+                "projectId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "jobId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "body": {
+                    "location": "jsonBody",
+                    "type": "object",
+                    "instanceOf": "TextKing\\Model\\Job",
+                    "required": true
+                }
+            }
+        },
+        "DeleteJob": {
+            "httpMethod": "DELETE",
+            "uri": "project/{projectId}/job/{jobId}",
+            "parameters": {
+                "projectId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "jobId": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+
+        /* Topics */
         "GetTopics": {
             "httpMethod": "GET",
             "uri": "topics",
@@ -81,6 +167,7 @@
             }
         },
 
+        /* Languages */
         "GetSourceLanguages": {
             "httpMethod": "GET",
             "uri": "languages/source",

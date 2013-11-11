@@ -40,6 +40,36 @@ class Service {
         return $this->ExecuteCommand('DeleteProject', array('projectId' => $projectId));
     }
 
+    public function getJobs($projectId, $page = 1, $perPage = 100)
+    {
+        return $this->ExecuteCommand('GetJobs',
+            array('projectId' => $projectId, 'page' => $page, 'per_page' => $perPage));
+    }
+
+    public function getJob($projectId, $jobId)
+    {
+        return $this->ExecuteCommand('GetJob',
+            array('projectId' => $projectId, 'jobId' => $jobId));
+    }
+
+    public function createJob($projectId, Model\Job $job)
+    {
+        return $this->ExecuteCommand('CreateJob',
+            array('projectId' => $projectId, 'body' => $job));
+    }
+
+    public function updateJob($projectId, $jobId, Model\Job $job)
+    {
+        return $this->ExecuteCommand('UpdateJob',
+            array('projectId' => $projectId, 'jobId' => $jobId, 'body' => $job));
+    }
+
+    public function deleteJob($projectId, $jobId)
+    {
+        return $this->ExecuteCommand('DeleteJob',
+            array('projectId' => $projectId, 'jobId' => $jobId));
+    }
+
     public function getTopics($page = 1, $perPage = 100)
     {
         return $this->ExecuteCommand('GetTopics',
