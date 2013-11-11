@@ -70,6 +70,18 @@ class Service {
             array('projectId' => $projectId, 'jobId' => $jobId));
     }
 
+    public function uploadDocument($projectId, $jobId, $stream, $documentName, $contentType)
+    {
+        return $this->ExecuteCommand('UploadDocument',
+            array(
+                'projectId' => $projectId,
+                'jobId' => $jobId,
+                'documentName' => $documentName,
+                'contentType' => $contentType,
+                'file' => $stream
+            ));
+    }
+
     public function getTopics($page = 1, $perPage = 100)
     {
         return $this->ExecuteCommand('GetTopics',

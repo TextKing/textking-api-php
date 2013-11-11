@@ -147,7 +147,35 @@
             }
         },
 
-        /* Topics */
+        "UploadDocument": {
+            "httpMethod": "POST",
+            "uri": "project/{projectId}/job/{jobId}/document/{documentName}",
+            "parameters": {
+                "projectId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "jobId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "documentName": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "contentType": {
+                    "location": "header",
+                    "sentAs": "Content-Type",
+                    "required": true
+                },
+                "file": {
+                    "location": "body",
+                    "required": true
+                }
+            }
+        },
+
         "GetTopics": {
             "httpMethod": "GET",
             "uri": "topics",
