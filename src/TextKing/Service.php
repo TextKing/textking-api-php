@@ -113,9 +113,9 @@ class Service {
     private function executeCommand($command, $params = array())
     {
         $command = $this->client->getCommand($command, $params);
-        //$request = $command->prepare();
-        //$request->getCurlOptions()->set(CURLOPT_VERBOSE, true);
-        //$project = $command->execute();;
-        return $this->client->execute($command);
+        //return $this->client->execute($command);
+        $request = $command->prepare();
+        $request->getCurlOptions()->set(CURLOPT_VERBOSE, true);
+        return $command->execute();
     }
 } 
