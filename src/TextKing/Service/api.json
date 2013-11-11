@@ -14,10 +14,10 @@
         },
         "GetProject": {
             "httpMethod": "GET",
-            "uri": "project/{id}",
+            "uri": "project/{projectId}",
             "responseClass": "TextKing\\Model\\Project",
             "parameters": {
-                "id": {
+                "projectId": {
                     "location": "uri",
                     "required": true
                 }
@@ -36,10 +36,10 @@
         },
         "UpdateProject": {
             "httpMethod": "PUT",
-            "uri": "project/{id}",
+            "uri": "project/{projectId}",
             "responseClass": "TextKing\\Model\\Project",
             "parameters": {
-                "id": {
+                "projectId": {
                     "location": "uri",
                     "required": true
                 },
@@ -51,9 +51,9 @@
         },
         "DeleteProject": {
             "httpMethod": "DELETE",
-            "uri": "project/{id}",
+            "uri": "project/{projectId}",
             "parameters": {
-                "id": {
+                "projectId": {
                     "location": "uri",
                     "required": true
                 }
@@ -71,10 +71,10 @@
         },
         "GetTopic": {
             "httpMethod": "GET",
-            "uri": "topic/{id}",
+            "uri": "topic/{topicId}",
             "responseClass": "TextKing\\Model\\Topic",
             "parameters": {
-                "id": {
+                "topicId": {
                     "location": "uri",
                     "required": true
                 }

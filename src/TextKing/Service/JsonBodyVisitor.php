@@ -1,6 +1,6 @@
 <?php
 
-namespace TextKing\Guzzle;
+namespace TextKing\Service;
 
 use Guzzle\Http\Message\RequestInterface;
 use Guzzle\Service\Command\CommandInterface;
