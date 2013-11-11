@@ -36,6 +36,6 @@ class JsonBodyVisitor extends \Guzzle\Service\Command\LocationVisitor\Request\Ab
             $request->setHeader('Content-Type', $this->jsonContentType);
         }
 
-        $request->setBody(json_encode($value->toArray()));
+        $request->setBody(json_encode($value));
     }
 }

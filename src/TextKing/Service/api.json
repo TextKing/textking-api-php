@@ -3,7 +3,6 @@
     "apiVersion": "1.0",
     "baseUrl": "https://api.textking.com/v1",
     "operations": {
-        /* Projects */
         "GetProjects": {
             "httpMethod": "GET",
             "uri": "projects",
@@ -65,7 +64,6 @@
             }
         },
 
-        /* Jobs */
         "GetJobs": {
             "httpMethod": "GET",
             "uri": "project/{projectId}/jobs",
@@ -101,6 +99,10 @@
             "uri": "project/{projectId}/jobs",
             "responseClass": "TextKing\\Model\\Job",
             "parameters": {
+                "projectId": {
+                    "location": "uri",
+                    "required": true
+                },
                 "body": {
                     "location": "jsonBody",
                     "type": "object",
@@ -167,7 +169,6 @@
             }
         },
 
-        /* Languages */
         "GetSourceLanguages": {
             "httpMethod": "GET",
             "uri": "languages/source",
