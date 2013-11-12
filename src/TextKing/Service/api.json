@@ -7,9 +7,23 @@
             "httpMethod": "GET",
             "uri": "projects",
             "responseClass": "TextKing\\Model\\ProjectList",
-            "additionalParameters": {
-                "per_page": "query",
-                "page": "query"
+            "parameters": {
+                "perPage": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false,
+                    "sentAs": "per_page"
+                },
+                "page": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false
+                },
+                "state": {
+                    "location": "query",
+                    "type": "string",
+                    "required": false
+                }
             }
         },
         "GetProject": {
@@ -74,9 +88,18 @@
                     "required": true
                 }
             },
-            "additionalParameters": {
-                "per_page": "query",
-                "page": "query"
+            "parameters": {
+                "perPage": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false,
+                    "sentAs": "per_page"
+                },
+                "page": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false
+                }
             }
         },
         "GetJob": {
@@ -180,9 +203,18 @@
             "httpMethod": "GET",
             "uri": "topics",
             "responseClass": "TextKing\\Model\\TopicList",
-            "additionalParameters": {
-                "per_page": "query",
-                "page": "query"
+            "parameters": {
+                "perPage": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false,
+                    "sentAs": "per_page"
+                },
+                "page": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false
+                }
             }
         },
         "GetTopic": {
@@ -201,18 +233,36 @@
             "httpMethod": "GET",
             "uri": "languages/source",
             "responseClass": "TextKing\\Model\\LanguageList",
-            "additionalParameters": {
-                "per_page": "query",
-                "page": "query"
+            "parameters": {
+                "perPage": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false,
+                    "sentAs": "per_page"
+                },
+                "page": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false
+                }
             }
         },
         "GetTargetLanguages": {
             "httpMethod": "GET",
             "uri": "languages/target",
             "responseClass": "TextKing\\Model\\LanguageList",
-            "additionalParameters": {
-                "per_page": "query",
-                "page": "query"
+            "parameters": {
+                "perPage": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false,
+                    "sentAs": "per_page"
+                },
+                "page": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false
+                }
             }
         },
         "GetLanguage": {

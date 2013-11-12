@@ -14,10 +14,16 @@ class Service {
         $this->client = \TextKing\Service\Client::factory($config);
     }
 
-    public function getProjects($page = 1, $perPage = 100)
+    public function getProjects($state = null, $page = 1, $perPage = 100)
     {
-        return $this->ExecuteCommand('GetProjects',
-            array('page' => $page, 'per_page' => $perPage));
+        $parameters = array('page' => $page, 'perPage' => $perPage);
+
+        if ($state != null)
+        {
+            $parameters['state'] = $state;
+        }
+
+        return $this->ExecuteCommand('GetProjects', $parameters);
     }
 
     public function getProject($projectId)
@@ -43,7 +49,7 @@ class Service {
     public function getJobs($projectId, $page = 1, $perPage = 100)
     {
         return $this->ExecuteCommand('GetJobs',
-            array('projectId' => $projectId, 'page' => $page, 'per_page' => $perPage));
+            array('projectId' => $projectId, 'page' => $page, 'perPage' => $perPage));
     }
 
     public function getJob($projectId, $jobId)
@@ -85,7 +91,7 @@ class Service {
     public function getTopics($page = 1, $perPage = 100)
     {
         return $this->ExecuteCommand('GetTopics',
-            array('page' => $page, 'per_page' => $perPage));
+            array('page' => $page, 'perPage' => $perPage));
     }
 
     public function getTopic($topicId)
@@ -96,13 +102,13 @@ class Service {
     public function getSourceLanguages($page = 1, $perPage = 100)
     {
         return $this->ExecuteCommand('GetSourceLanguages',
-            array('page' => $page, 'per_page' => $perPage));
+            array('page' => $page, 'perPage' => $perPage));
     }
 
     public function getTargetLanguages($page = 1, $perPage = 100)
     {
         return $this->ExecuteCommand('GetTargetLanguages',
-            array('page' => $page, 'per_page' => $perPage));
+            array('page' => $page, 'perPage' => $perPage));
     }
 
     public function getLanguage($code)
