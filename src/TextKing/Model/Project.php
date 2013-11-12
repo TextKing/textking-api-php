@@ -4,6 +4,11 @@ namespace TextKing\Model;
 
 class Project extends AbstractModel implements \Guzzle\Common\ToArrayInterface {
 
+    const STATE_PREPARED = 'prepared';
+    const STATE_RUNNING = 'running';
+    const STATE_FINISHED = 'finished';
+    const STATE_CANCELED = 'canceled';
+
     /** @var string */
     private $id;
 
@@ -80,7 +85,7 @@ class Project extends AbstractModel implements \Guzzle\Common\ToArrayInterface {
         return array(
             'name' => $this->name,
             'due_date' => $this->dueDate,
-            //'state' => $this->state,
+            'state' => $this->state,
             'coupon_name' => $this->couponName,
             'affiliate_id' => $this->affiliateId,
             'billing_address' => $this->billingAddress,
@@ -133,6 +138,14 @@ class Project extends AbstractModel implements \Guzzle\Common\ToArrayInterface {
     public function getDueDate()
     {
         return $this->dueDate;
+    }
+
+    /**
+     * @param string $dueDate
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
     }
 
     /**
