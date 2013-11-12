@@ -192,8 +192,36 @@
                     "sentAs": "Content-Type",
                     "required": true
                 },
-                "file": {
+                "stream": {
                     "location": "body",
+                    "required": true
+                }
+            }
+        },
+        "DownloadDocument": {
+            "httpMethod": "GET",
+            "uri": "project/{projectId}/job/{jobId}/document",
+            "parameters": {
+                "projectId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "jobId": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "DownloadTranslation": {
+            "httpMethod": "GET",
+            "uri": "project/{projectId}/job/{jobId}/translation",
+            "parameters": {
+                "projectId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "jobId": {
+                    "location": "uri",
                     "required": true
                 }
             }
