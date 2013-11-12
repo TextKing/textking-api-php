@@ -1,6 +1,30 @@
 <?php
+/*
+ * TEXTKING API bindings for PHP
+ * Copyright (C) 2013 TEXTKING Deutschland GmbH (https://www.textking.com)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
 namespace TextKing;
+
+use Guzzle\Http\Message\Response;
 
 class Service {
 
@@ -25,7 +49,8 @@ class Service {
      */
     public function setContentLanguage($contentLanguage)
     {
-        $this->client->setDefaultOption('headers/Accept-Language', $contentLanguage);
+        $this->client->setDefaultOption('headers/Accept-Language',
+            $contentLanguage);
     }
 
     /**
@@ -51,7 +76,8 @@ class Service {
      */
     public function getProject($projectId)
     {
-        return $this->executeCommand('GetProject', array('projectId' => $projectId));
+        return $this->executeCommand('GetProject',
+            array('projectId' => $projectId));
     }
 
     /**
@@ -60,7 +86,8 @@ class Service {
      */
     public function createProject(Model\Project $project)
     {
-        return $this->executeCommand('CreateProject', array('body' => $project));
+        return $this->executeCommand('CreateProject',
+            array('body' => $project));
     }
 
     /**
@@ -70,7 +97,8 @@ class Service {
      */
     public function updateProject($projectId, Model\Project $project)
     {
-        return $this->executeCommand('UpdateProject', array('projectId' => $projectId, 'body' => $project));
+        return $this->executeCommand('UpdateProject',
+            array('projectId' => $projectId, 'body' => $project));
     }
 
     /**
@@ -79,7 +107,8 @@ class Service {
      */
     public function deleteProject($projectId)
     {
-        $this->executeCommand('DeleteProject', array('projectId' => $projectId));
+        $this->executeCommand('DeleteProject',
+            array('projectId' => $projectId));
     }
 
     /**
@@ -91,7 +120,11 @@ class Service {
     public function getJobs($projectId, $page = 1, $perPage = 100)
     {
         return $this->executeCommand('GetJobs',
-            array('projectId' => $projectId, 'page' => $page, 'perPage' => $perPage));
+            array(
+                'projectId' => $projectId,
+                'page' => $page,
+                'perPage' => $perPage
+            ));
     }
 
     /**
@@ -238,7 +271,7 @@ class Service {
      * @param \Guzzle\Http\Message\Response $response
      * @return Model\Document
      */
-    private static function createDocumentFromResponse(\Guzzle\Http\Message\Response $response)
+    private static function createDocumentFromResponse(Response $response)
     {
         $contentDisposition = $response->getContentDisposition();
         $name = self::parseFilenameFromContentDisposition($contentDisposition);
@@ -258,7 +291,9 @@ class Service {
     private static function parseFilenameFromContentDisposition($contentDisposition)
     {
         $fieldName = "filename=";
-        $name = substr($contentDisposition, strpos($contentDisposition, $fieldName) + strlen($fieldName));
+        $filenamePos = strpos($contentDisposition, $fieldName)
+            + strlen($fieldName);
+        $name = substr($contentDisposition, $filenamePos);
         return $name;
     }
 
