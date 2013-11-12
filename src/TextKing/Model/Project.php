@@ -4,34 +4,52 @@ namespace TextKing\Model;
 
 class Project extends AbstractModel implements \Guzzle\Common\ToArrayInterface {
 
+    /** @var string */
     public $id;
 
+    /** @var string */
     public $number;
 
+    /** @var string */
     public $name;
 
+    /** @var string */
     public $dueDate;
 
+    /** @var string */
     public $state;
 
+    /** @var string */
     public $currency;
 
+    /** @var float */
     public $netPrice;
 
+    /** @var float */
     public $vat;
 
+    /** @var string */
     public $couponName;
 
+    /** @var float */
     public $couponValue;
 
+    /** @var float */
     public $discountCustomer;
 
+    /** @var float */
     public $discountProject;
 
+    /** @var string */
     public $affiliateId;
 
+    /** @var string */
     public $billingAddress;
 
+    /**
+     * @param string $json
+     * @return Project
+     */
     public static function fromJson($json)
     {
         $object = new self();

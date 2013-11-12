@@ -4,32 +4,49 @@ namespace TextKing\Model;
 
 class Job extends AbstractModel implements \Guzzle\Common\ToArrayInterface {
 
+    /** @var string */
     public $id;
 
+    /** @var string */
     public $number;
 
+    /** @var string */
     public $name;
 
+    /** @var string */
     public $sourceLanguage;
 
+    /** @var string */
     public $targetLanguage;
 
+    /** @var string */
     public $quality;
 
+    /** @var string */
     public $topic;
 
+    /** @var string */
     public $briefing;
 
+    /** @var string */
     public $state;
 
+    /** @var int */
     public $words;
 
+    /** @var string */
     public $currency;
 
+    /** @var float */
     public $netPrice;
 
+    /** @var bool */
     public $isActive;
 
+    /**
+     * @param string $json
+     * @return Job
+     */
     public static function fromJson($json)
     {
         $object = new self();
@@ -45,7 +62,7 @@ class Job extends AbstractModel implements \Guzzle\Common\ToArrayInterface {
         $object->words = (string)$json['words'];
         $object->currency = (string)$json['currency'];
         $object->netPrice = (float)$json['net_price'];
-        $object->isActive = (string)$json['is_active'];
+        $object->isActive = (bool)$json['is_active'];
         return $object;
     }
 

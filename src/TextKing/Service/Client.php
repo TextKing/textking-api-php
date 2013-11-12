@@ -5,8 +5,12 @@ namespace TextKing\Service;
 use Guzzle\Common\Collection;
 use Guzzle\Service\Description\ServiceDescription;
 
-class Client extends \Guzzle\Service\Client
-{
+final class Client extends \Guzzle\Service\Client {
+
+    /**
+     * @param array $config
+     * @return Client
+     */
     public static function factory($config = array())
     {
         $default = array(

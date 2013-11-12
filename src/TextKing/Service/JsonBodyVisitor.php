@@ -11,7 +11,7 @@ use Guzzle\Service\Description\Parameter;
  */
 class JsonBodyVisitor extends \Guzzle\Service\Command\LocationVisitor\Request\AbstractRequestVisitor
 {
-    /** @var bool Whether or not to add a Content-Type header when JSON is found */
+    /** @var string The content type (default is "application/json") */
     protected $jsonContentType = 'application/json';
 
     /**

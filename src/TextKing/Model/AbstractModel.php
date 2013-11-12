@@ -7,6 +7,10 @@ use Guzzle\Service\Command\OperationCommand;
 
 abstract class AbstractModel implements ResponseClassInterface {
 
+    /**
+     * @param OperationCommand $command
+     * @return AbstractModel
+     */
     public final static function fromCommand(OperationCommand $command)
     {
         $response = $command->getResponse();
@@ -15,5 +19,9 @@ abstract class AbstractModel implements ResponseClassInterface {
         return static::fromJson($json);
     }
 
+    /**
+     * @param string $json
+     * @return AbstractModel
+     */
     abstract public static function fromJson($json);
 } 
