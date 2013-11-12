@@ -5,43 +5,43 @@ namespace TextKing\Model;
 class Job extends AbstractModel implements \Guzzle\Common\ToArrayInterface {
 
     /** @var string */
-    public $id;
+    private $id;
 
     /** @var string */
-    public $number;
+    private $number;
 
     /** @var string */
-    public $name;
+    private $name;
 
     /** @var string */
-    public $sourceLanguage;
+    private $sourceLanguage;
 
     /** @var string */
-    public $targetLanguage;
+    private $targetLanguage;
 
     /** @var string */
-    public $quality;
+    private $quality;
 
     /** @var string */
-    public $topic;
+    private $topic;
 
     /** @var string */
-    public $briefing;
+    private $briefing;
 
     /** @var string */
-    public $state;
+    private $state;
 
     /** @var int */
-    public $words;
+    private $words;
 
     /** @var string */
-    public $currency;
+    private $currency;
 
     /** @var float */
-    public $netPrice;
+    private $netPrice;
 
     /** @var bool */
-    public $isActive;
+    private $isActive;
 
     /**
      * @param string $json
@@ -83,5 +83,165 @@ class Job extends AbstractModel implements \Guzzle\Common\ToArrayInterface {
             'briefing' => $this->briefing,
             'is_active' => $this->isActive,
         );
+    }
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @param string $sourceLanguage
+     */
+    public function setSourceLanguage($sourceLanguage)
+    {
+        $this->sourceLanguage = $sourceLanguage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSourceLanguage()
+    {
+        return $this->sourceLanguage;
+    }
+
+    /**
+     * @param string $targetLanguage
+     */
+    public function setTargetLanguage($targetLanguage)
+    {
+        $this->targetLanguage = $targetLanguage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTargetLanguage()
+    {
+        return $this->targetLanguage;
+    }
+
+    /**
+     * @param string $quality
+     */
+    public function setQuality($quality)
+    {
+        $this->quality = $quality;
+    }
+
+    /**
+     * @return string
+     */
+    public function getQuality()
+    {
+        return $this->quality;
+    }
+
+    /**
+     * @param string $topic
+     */
+    public function setTopic($topic)
+    {
+        $this->topic = $topic;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTopic()
+    {
+        return $this->topic;
+    }
+
+    /**
+     * @param string $briefing
+     */
+    public function setBriefing($briefing)
+    {
+        $this->briefing = $briefing;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBriefing()
+    {
+        return $this->briefing;
+    }
+
+    /**
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @return int
+     */
+    public function getWords()
+    {
+        return $this->words;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @return float
+     */
+    public function getNetPrice()
+    {
+        return $this->netPrice;
+    }
+
+    /**
+     * @param boolean $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
     }
 }

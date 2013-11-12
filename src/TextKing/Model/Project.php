@@ -5,46 +5,46 @@ namespace TextKing\Model;
 class Project extends AbstractModel implements \Guzzle\Common\ToArrayInterface {
 
     /** @var string */
-    public $id;
+    private $id;
 
     /** @var string */
-    public $number;
+    private $number;
 
     /** @var string */
-    public $name;
+    private $name;
 
     /** @var string */
-    public $dueDate;
+    private $dueDate;
 
     /** @var string */
-    public $state;
+    private $state;
 
     /** @var string */
-    public $currency;
+    private $currency;
 
     /** @var float */
-    public $netPrice;
+    private $netPrice;
 
     /** @var float */
-    public $vat;
+    private $vat;
 
     /** @var string */
-    public $couponName;
+    private $couponName;
 
     /** @var float */
-    public $couponValue;
+    private $couponValue;
 
     /** @var float */
-    public $discountCustomer;
+    private $discountCustomer;
 
     /** @var float */
-    public $discountProject;
+    private $discountProject;
 
     /** @var string */
-    public $affiliateId;
+    private $affiliateId;
 
     /** @var string */
-    public $billingAddress;
+    private $billingAddress;
 
     /**
      * @param string $json
@@ -86,4 +86,157 @@ class Project extends AbstractModel implements \Guzzle\Common\ToArrayInterface {
             'billing_address' => $this->billingAddress,
         );
     }
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $dueDate
+     */
+    public function setDueDate($dueDate)
+    {
+        $this->dueDate = $dueDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDueDate()
+    {
+        return $this->dueDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @return float
+     */
+    public function getNetPrice()
+    {
+        return $this->netPrice;
+    }
+
+    /**
+     * @return float
+     */
+    public function getVat()
+    {
+        return $this->vat;
+    }
+
+    /**
+     * @param string $couponName
+     */
+    public function setCouponName($couponName)
+    {
+        $this->couponName = $couponName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCouponName()
+    {
+        return $this->couponName;
+    }
+
+    /**
+     * @return float
+     */
+    public function getCouponValue()
+    {
+        return $this->couponValue;
+    }
+
+    /**
+     * @return float
+     */
+    public function getDiscountCustomer()
+    {
+        return $this->discountCustomer;
+    }
+
+    /**
+     * @return float
+     */
+    public function getDiscountProject()
+    {
+        return $this->discountProject;
+    }
+
+    /**
+     * @param string $affiliateId
+     */
+    public function setAffiliateId($affiliateId)
+    {
+        $this->affiliateId = $affiliateId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAffiliateId()
+    {
+        return $this->affiliateId;
+    }
+
+    /**
+     * @param string $billingAddress
+     */
+    public function setBillingAddress($billingAddress)
+    {
+        $this->billingAddress = $billingAddress;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBillingAddress()
+    {
+        return $this->billingAddress;
+    }
+
 }

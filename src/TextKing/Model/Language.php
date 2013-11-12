@@ -5,13 +5,13 @@ namespace TextKing\Model;
 class Language extends AbstractModel
 {
     /** @var string */
-    public $code;
+    protected $code;
 
     /** @var string */
-    public $name;
+    protected $name;
 
     /** @var string */
-    public $localizationLanguage;
+    protected $localizationLanguage;
 
     /**
      * @param string $json
@@ -24,5 +24,26 @@ class Language extends AbstractModel
         $object->name = (string)$json['name'];
         $object->localizationLanguage = (string)$json['localization_language'];
         return $object;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode() {
+        return $this->code;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName() {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocalizationLanguage() {
+        return $this->localizationLanguage;
     }
 }

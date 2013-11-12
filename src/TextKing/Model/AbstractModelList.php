@@ -4,17 +4,17 @@ namespace TextKing\Model;
 
 abstract class AbstractModelList extends AbstractModel {
 
-    /** @var int */
-    public $page;
-
-    /** @var int */
-    public $perPage;
-
-    /** @var int */
-    public $total;
-
     /** @var AbstractModel[] */
-    public $items;
+    private $items;
+
+    /** @var int */
+    private $page;
+
+    /** @var int */
+    private $perPage;
+
+    /** @var int */
+    private $total;
 
     /**
      * @param string $json
@@ -40,4 +40,36 @@ abstract class AbstractModelList extends AbstractModel {
      * @return string
      */
     abstract protected static function getItemClassName();
-} 
+
+    /**
+     * @return \TextKing\Model\AbstractModel[]
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPerPage()
+    {
+        return $this->perPage;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
+}
