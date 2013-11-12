@@ -2,7 +2,7 @@
 
 namespace TextKing\Model;
 
-class ProjectList extends AbstractModelList
+class JobList extends AbstractModelList
 {
     protected static function getItemClassName()
     {

@@ -86,9 +86,7 @@
                 "projectId": {
                     "location": "uri",
                     "required": true
-                }
-            },
-            "parameters": {
+                },
                 "perPage": {
                     "location": "query",
                     "type": "integer",
