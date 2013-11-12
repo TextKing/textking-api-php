@@ -9,15 +9,23 @@ class Service {
 
     /**
      * @param string $accessToken
-     * @param string $displayLanguage
+     * @param string $contentLanguage
      */
-    public function __construct($accessToken, $displayLanguage = 'en')
+    public function __construct($accessToken, $contentLanguage = 'en')
     {
         $config = array(
             'access_token' => $accessToken,
-            'accept_language' => $displayLanguage
+            'accept_language' => $contentLanguage
         );
         $this->client = \TextKing\Service\Client::factory($config);
+    }
+
+    /**
+     * @param string $contentLanguage
+     */
+    public function setContentLanguage($contentLanguage)
+    {
+        $this->client->setDefaultOption('headers/Accept-Language', $contentLanguage);
     }
 
     /**
