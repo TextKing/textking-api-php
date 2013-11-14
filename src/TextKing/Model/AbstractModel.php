@@ -24,10 +24,9 @@
 
 namespace TextKing\Model;
 
-use Guzzle\Service\Command\ResponseClassInterface;
 use Guzzle\Service\Command\OperationCommand;
 
-abstract class AbstractModel implements ResponseClassInterface
+abstract class AbstractModel implements IModel
 {
     /**
      * @param OperationCommand $command
@@ -40,10 +39,4 @@ abstract class AbstractModel implements ResponseClassInterface
 
         return static::fromJson($json);
     }
-
-    /**
-     * @param string $json
-     * @return AbstractModel
-     */
-    abstract public static function fromJson($json);
-} 
+}

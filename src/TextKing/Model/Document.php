@@ -48,16 +48,32 @@ class Document
     }
 
     /**
-     * @param $text
+     * @param string $text
      * @param string $name
      * @return Document
      */
-    public static function createFromString($text, $name="document.txt")
+    public static function createFromString($text, $name='document.txt')
     {
-        $stream = fopen('php://memory','r+');
+        $stream = fopen('php://memory', 'r+');
         fwrite($stream, $text);
         rewind($stream);
-        return new static($name, $stream, "text/plain");
+        return new static($name, $stream, 'text/plain');
+    }
+
+    /**
+     * @param array $uploadedFile
+     * @param string $name
+     * @return Document
+     */
+    public static function createFromUpload($uploadedFile)
+    {
+        if (!is_uploaded_file($uploadedFile['tmp_name'])) {
+            throw new \Exception(
+                "The file " . $uploadedFile['tmp_name'] . " is not an uploaded file");
+        }
+
+        $stream = fopen($uploadedFile['tmp_name'], 'r+');
+        return new static($uploadedFile['name'], $stream, $uploadedFile['type']);
     }
 
     /**

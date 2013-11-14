@@ -24,69 +24,13 @@
 
 namespace TextKing\Model;
 
-abstract class AbstractModelList extends AbstractModel implements IModelList
+use Guzzle\Service\Command\ResponseClassInterface;
+
+interface IModel extends ResponseClassInterface
 {
-    /** @var AbstractModel[] */
-    private $items;
-
-    /** @var int */
-    private $page;
-
-    /** @var int */
-    private $perPage;
-
-    /** @var int */
-    private $total;
-
     /**
      * @param string $json
-     * @return AbstractModelList
+     * @return AbstractModel
      */
-    public static function fromJson($json)
-    {
-        $list = new static();
-        $list->page = (string)$json['page'];
-        $list->perPage = (string)$json['per_page'];
-        $list->total = (string)$json['total'];
-        $list->items = array();
-
-        $itemClass = "\\TextKing\\Model\\" . static::getItemClassName();
-        foreach ($json["items"] as $itemJson) {
-            $list->items[] = $itemClass::fromJson($itemJson);
-        }
-
-        return $list;
-    }
-
-    /**
-     * @return \TextKing\Model\AbstractModel[]
-     */
-    public function getItems()
-    {
-        return $this->items;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPage()
-    {
-        return $this->page;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPerPage()
-    {
-        return $this->perPage;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTotal()
-    {
-        return $this->total;
-    }
+    static function fromJson($json);
 }

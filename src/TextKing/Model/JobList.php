@@ -29,7 +29,7 @@ class JobList extends AbstractModelList
     /**
      * @return string
      */
-    protected static function getItemClassName()
+    public static function getItemClassName()
     {
         return "Job";
     }

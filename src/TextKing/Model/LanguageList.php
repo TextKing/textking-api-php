@@ -26,7 +26,7 @@ namespace TextKing\Model;
 
 class LanguageList extends AbstractModelList
 {
-    protected static function getItemClassName()
+    public static function getItemClassName()
     {
         return "Language";
     }
