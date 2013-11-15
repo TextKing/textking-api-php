@@ -113,6 +113,16 @@ class Service {
 
     /**
      * @param string $projectId
+     * @return Model\Coupon
+     */
+    public function getProjectCoupon($projectId)
+    {
+        return $this->executeCommand('GetProjectCoupon',
+            array('projectId' => $projectId));
+    }
+
+    /**
+     * @param string $projectId
      * @param int $page
      * @param int $perPage
      * @return Model\JobList

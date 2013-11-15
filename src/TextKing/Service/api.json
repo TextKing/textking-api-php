@@ -78,6 +78,18 @@
             }
         },
 
+        "GetProjectCoupon": {
+            "httpMethod": "GET",
+            "uri": "project/{projectId}/coupon",
+            "responseClass": "TextKing\\Model\\Coupon",
+            "parameters": {
+                "projectId": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+
         "GetJobs": {
             "httpMethod": "GET",
             "uri": "project/{projectId}/jobs",
