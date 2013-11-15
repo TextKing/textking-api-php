@@ -227,6 +227,90 @@ class Service {
     }
 
     /**
+     * @param string $projectId
+     * @param string $jobId
+     * @param int $page
+     * @param int $perPage
+     * @return Model\CallbackList
+     */
+    public function getJobCallbacks($projectId, $jobId, $page = 1, $perPage = 100)
+    {
+        return $this->executeCommand('GetJobCallbacks',
+            array(
+                'projectId' => $projectId,
+                'jobId' => $jobId,
+                'page' => $page,
+                'perPage' => $perPage
+            ));
+    }
+
+    /**
+     * @param string $projectId
+     * @param string $jobId
+     * @param string $callbackId
+     * @return Model\Callback
+     */
+    public function getJobCallback($projectId, $jobId, $callbackId)
+    {
+        return $this->executeCommand('GetJobCallback',
+            array(
+                'projectId' => $projectId,
+                'jobId' => $jobId,
+                'callbackId' => $callbackId
+            ));
+    }
+
+    /**
+     * @param string $projectId
+     * @param string $jobId
+     * @param Model\Callback $callback
+     * @return Model\Callback
+     */
+    public function registerJobCallback($projectId, $jobId, Model\Callback $callback)
+    {
+        return $this->executeCommand('CreateJobCallback',
+            array(
+                'projectId' => $projectId,
+                'jobId' => $jobId,
+                'body' => $callback
+            ));
+    }
+
+    /**
+     * @param string $projectId
+     * @param string $jobId
+     * @param string $callbackId
+     * @param Model\Callback $callback
+     * @return Model\Callback
+     */
+    public function updateJobCallback($projectId, $jobId, $callbackId, Model\Callback $callback)
+    {
+        return $this->executeCommand('UpdateJobCallback',
+            array(
+                'projectId' => $projectId,
+                'jobId' => $jobId,
+                'callbackId' => $callbackId,
+                'body' => $callback
+            ));
+    }
+
+    /**
+     * @param string $projectId
+     * @param string $jobId
+     * @param string $callbackId
+     * @return void
+     */
+    public function deleteJobCallback($projectId, $jobId, $callbackId)
+    {
+        $this->executeCommand('DeleteJobCallback',
+            array(
+                'projectId' => $projectId,
+                'jobId' => $jobId,
+                'callbackId' => $callbackId
+            ));
+    }
+
+    /**
      * @param int $page
      * @param int $perPage
      * @return Model\TopicList

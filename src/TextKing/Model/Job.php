@@ -26,6 +26,13 @@ namespace TextKing\Model;
 
 class Job extends AbstractModel implements \Guzzle\Common\ToArrayInterface
 {
+    const STATE_NEW = 'new';
+    const STATE_TRANSLATION_PENDING = 'translation-pending';
+    const STATE_TRANSLATION_DELIVERED = 'translation-delivered';
+    const STATE_REVISION_REQUESTED = 'revision-requested';
+    const STATE_COMPLETED = 'completed';
+    const STATE_CANCELED = 'canceled';
+
     /** @var string */
     private $id;
 

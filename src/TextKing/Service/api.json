@@ -237,6 +237,116 @@
             }
         },
 
+        "GetJobCallbackss": {
+            "httpMethod": "GET",
+            "uri": "project/{projectId}/job/{jobId}/callbacks",
+            "responseClass": "TextKing\\Model\\CallbackList",
+            "parameters": {
+                "projectId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "jobId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "perPage": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false,
+                    "sentAs": "per_page"
+                },
+                "page": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false
+                }
+            }
+        },
+        "GetJobCallback": {
+            "httpMethod": "GET",
+            "uri": "project/{projectId}/job/{jobId}/callback/{callbackId}",
+            "responseClass": "TextKing\\Model\\Callback",
+            "parameters": {
+                "projectId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "jobId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "callbackId": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "CreateJobCallback": {
+            "httpMethod": "POST",
+            "uri": "project/{projectId}/job/{jobId}/callbacks",
+            "responseClass": "TextKing\\Model\\Callback",
+            "parameters": {
+                "projectId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "jobId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "body": {
+                    "location": "jsonBody",
+                    "type": "object",
+                    "instanceOf": "TextKing\\Model\\Callback",
+                    "required": true
+                }
+            }
+        },
+        "UpdateJobCallback": {
+            "httpMethod": "PUT",
+            "uri": "project/{projectId}/job/{jobId}/callback/{callbackId}",
+            "responseClass": "TextKing\\Model\\Callback",
+            "parameters": {
+                "projectId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "jobId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "callbackId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "body": {
+                    "location": "jsonBody",
+                    "type": "object",
+                    "instanceOf": "TextKing\\Model\\Callback",
+                    "required": true
+                }
+            }
+        },
+        "DeleteJobCallback": {
+            "httpMethod": "DELETE",
+            "uri": "project/{projectId}/job/{jobId}/callback/{callbackId}",
+            "parameters": {
+                "projectId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "jobId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "callbackId": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+
         "GetTopics": {
             "httpMethod": "GET",
             "uri": "topics",
