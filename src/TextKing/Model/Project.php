@@ -41,7 +41,7 @@ class Project extends AbstractModel implements \Guzzle\Common\ToArrayInterface
     /** @var string */
     private $name;
 
-    /** @var string */
+    /** @var \DateTime */
     private $dueDate;
 
     /** @var string */
@@ -84,7 +84,11 @@ class Project extends AbstractModel implements \Guzzle\Common\ToArrayInterface
         $object->id = (string)$json['id'];
         $object->number = (string)$json['number'];
         $object->name = (string)$json['name'];
-        $object->dueDate = (string)$json['due_date'];
+
+        if (isset($json['due_date']) && $json['due_date'] != null) {
+            $object->dueDate = new \DateTime($json['due_date']);
+        }
+
         $object->state = (string)$json['state'];
         $object->currency = (string)$json['currency'];
         $object->netPrice = (float)$json['net_price'];
@@ -148,15 +152,15 @@ class Project extends AbstractModel implements \Guzzle\Common\ToArrayInterface
     }
 
     /**
-     * @param string $dueDate
+     * @param \DateTime $dueDate
      */
-    public function setDueDate($dueDate)
+    public function setDueDate(\DateTime $dueDate)
     {
         $this->dueDate = $dueDate;
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getDueDate()
     {
