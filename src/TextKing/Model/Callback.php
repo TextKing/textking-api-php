@@ -24,7 +24,7 @@
 
 namespace TextKing\Model;
 
-class Callback extends AbstractModel
+class Callback extends AbstractModel implements \Guzzle\Common\ToArrayInterface
 {
     /** @var string */
     protected $id;
@@ -62,6 +62,21 @@ class Callback extends AbstractModel
         $object->triggerState = (string)$json['trigger_state'];
         $object->extraData = (string)$json['extra_data'];
         return $object;
+    }
+
+    /**
+     * Get the array representation of an object
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return array(
+            'url' => $this->url,
+            'state' => $this->state,
+            'trigger_state' => $this->triggerState,
+            'extra_data' => $this->extraData
+        );
     }
 
     /**
