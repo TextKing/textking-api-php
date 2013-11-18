@@ -39,9 +39,9 @@ class Callback extends AbstractModel implements \Guzzle\Common\ToArrayInterface
     protected $extraData;
 
     /**
-     * @param string $name
-     * @param resource $stream
-     * @param string $contentType
+     * @param string $url
+     * @param string $triggerState
+     * @param string $extraData
      */
     public function __construct($url, $triggerState, $extraData = null)
     {
@@ -52,15 +52,14 @@ class Callback extends AbstractModel implements \Guzzle\Common\ToArrayInterface
 
     /**
      * @param string $json
-     * @return Coupon
+     * @return Callback
      */
     public static function fromJson($json)
     {
-        $object = new self();
+        $object = new self((string)$json['url'],
+            (string)$json['trigger_state'],
+            (string)$json['extra_data']);
         $object->id = (string)$json['id'];
-        $object->url = (string)$json['url'];
-        $object->triggerState = (string)$json['trigger_state'];
-        $object->extraData = (string)$json['extra_data'];
         return $object;
     }
 
