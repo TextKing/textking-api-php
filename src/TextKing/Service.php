@@ -374,10 +374,9 @@ class Service {
 
         $stream = $response->getBody()->getStream();
         rewind($stream);
-
         $contentType = $response->getContentType();
 
-        return new Model\Document($name, $stream, $contentType);
+        return Model\Document::createFromStream($stream, $name, $contentType);
     }
 
     /**

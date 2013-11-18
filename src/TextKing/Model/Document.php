@@ -40,7 +40,7 @@ class Document
      * @param resource $stream
      * @param string $contentType
      */
-    public function __construct($name, $stream, $contentType)
+    public function __construct($stream, $name, $contentType)
     {
         $this->name = $name;
         $this->stream = $stream;
@@ -57,7 +57,21 @@ class Document
         $stream = fopen('php://memory', 'r+');
         fwrite($stream, $text);
         rewind($stream);
-        return new static($name, $stream, 'text/plain');
+        return new static($stream, $name, 'text/plain');
+    }
+
+    /**
+     * @param resource $stream
+     * @param string $name
+     * @param string $contentType
+     * @return Document
+     */
+    public static function createFromStream($stream, $name, $contentType)
+    {
+        $dest = fopen('php://memory', 'r+');
+        stream_copy_to_stream($stream, $dest);
+        rewind($dest);
+        return new static($dest, $name, $contentType);
     }
 
     /**
@@ -73,7 +87,7 @@ class Document
         }
 
         $stream = fopen($uploadedFile['tmp_name'], 'r+');
-        return new static($uploadedFile['name'], $stream, $uploadedFile['type']);
+        return new static($stream, $uploadedFile['name'], $uploadedFile['type']);
     }
 
     /**
