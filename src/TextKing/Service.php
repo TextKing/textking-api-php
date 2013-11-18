@@ -25,6 +25,7 @@
 namespace TextKing;
 
 use Guzzle\Http\Message\Response;
+use Guzzle\Service\Command\AbstractCommand;
 
 class Service {
 
@@ -35,12 +36,13 @@ class Service {
      * @param string $accessToken
      * @param string $contentLanguage
      */
-    public function __construct($accessToken, $contentLanguage = 'en')
+    public function __construct($accessToken, $contentLanguage = 'en', $extraConfig = array())
     {
         $config = array(
             'access_token' => $accessToken,
             'accept_language' => $contentLanguage
         );
+        $config = array_merge($extraConfig, $config);
         $this->client = \TextKing\Service\Client::factory($config);
     }
 
@@ -208,7 +210,7 @@ class Service {
     public function downloadDocument($projectId, $jobId)
     {
         $response = $this->executeCommand('DownloadDocument',
-            array('projectId' => $projectId, 'jobId' => $jobId));
+            array('projectId' => $projectId, 'jobId' => $jobId), true);
 
         return self::createDocumentFromResponse($response);
     }
@@ -221,7 +223,7 @@ class Service {
     public function downloadTranslation($projectId, $jobId)
     {
         $response = $this->executeCommand('DownloadTranslation',
-            array('projectId' => $projectId, 'jobId' => $jobId));
+            array('projectId' => $projectId, 'jobId' => $jobId), true);
 
         return self::createDocumentFromResponse($response);
     }
@@ -394,11 +396,17 @@ class Service {
     /**
      * @param string $command
      * @param array $params
+     * @param bool $rawM
      * @return mixed
      */
-    private function executeCommand($command, $params = array())
+    private function executeCommand($command, $params = array(), $raw = false)
     {
         $command = $this->client->getCommand($command, $params);
+
+        if ($raw) {
+            $command[AbstractCommand::RESPONSE_PROCESSING] = AbstractCommand::TYPE_RAW;
+        }
+
         //return $this->client->execute($command);
         $request = $command->prepare();
         $request->getCurlOptions()->set(CURLOPT_VERBOSE, true);
