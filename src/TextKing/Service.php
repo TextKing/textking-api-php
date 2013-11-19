@@ -32,6 +32,9 @@ class Service {
     /** @var Service\Client */
     private $client;
 
+    /** @var bool */
+    private $debug;
+
     /**
      * @param string $accessToken
      * @param string $contentLanguage
@@ -53,6 +56,22 @@ class Service {
     {
         $this->client->setDefaultOption('headers/Accept-Language',
             $contentLanguage);
+    }
+
+    /**
+     * @param boolean $debug
+     */
+    public function enableDebugOutput($debug)
+    {
+        $this->debug = $debug;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isDebugOutputEnabled()
+    {
+        return $this->debug;
     }
 
     /**
@@ -406,12 +425,14 @@ class Service {
             $command[AbstractCommand::RESPONSE_PROCESSING] = AbstractCommand::TYPE_RAW;
         }
 
-        //return $this->client->execute($command);
         $request = $command->prepare();
-        $request->getCurlOptions()->set(CURLOPT_VERBOSE, true);
-        $request->getCurlOptions()->set(CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-        $request->getCurlOptions()->set(CURLOPT_FORBID_REUSE, true);
-        $request->getCurlOptions()->set(CURLOPT_FRESH_CONNECT, true);
+        //$request->getCurlOptions()->set(CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+        //$request->getCurlOptions()->set(CURLOPT_FORBID_REUSE, true);
+        //$request->getCurlOptions()->set(CURLOPT_FRESH_CONNECT, true);
+
+        if ($this->debug) {
+            $request->getCurlOptions()->set(CURLOPT_VERBOSE, true);
+        }
 
         return $command->execute();
     }
