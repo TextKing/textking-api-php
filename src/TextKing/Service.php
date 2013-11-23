@@ -348,7 +348,8 @@ class Service {
      */
     public function getTopic($topicId)
     {
-        return $this->executeCommand('GetTopic', array('id' => $topicId));
+        return $this->executeCommand('GetTopic',
+            array('topicId' => $topicId));
     }
 
     /**
