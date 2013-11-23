@@ -383,6 +383,27 @@ class Service {
     }
 
     /**
+     * @param int $page
+     * @param int $perPage
+     * @return Model\AddressList
+     */
+    public function getAccountAddresses($page = 1, $perPage = 100)
+    {
+        return $this->executeCommand('GetAccountAddresses',
+            array('page' => $page, 'perPage' => $perPage));
+    }
+
+    /**
+     * @param string $addressId
+     * @return Model\Address
+     */
+    public function getAccountAddress($addressId)
+    {
+        return $this->executeCommand('GetAccountAddress',
+            array('addressId' => $addressId));
+    }
+
+    /**
      * @param \Guzzle\Http\Message\Response $response
      * @return Model\Document
      */

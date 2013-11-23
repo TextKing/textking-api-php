@@ -423,6 +423,36 @@
                     "required": true
                 }
             }
+        },
+
+        "GetAccountAddresses": {
+            "httpMethod": "GET",
+            "uri": "account/addresses",
+            "responseClass": "TextKing\\Model\\AddressList",
+            "parameters": {
+                "perPage": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false,
+                    "sentAs": "per_page"
+                },
+                "page": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false
+                }
+            }
+        },
+        "GetAccountAddress": {
+            "httpMethod": "GET",
+            "uri": "account/address/{addressId}",
+            "responseClass": "TextKing\\Model\\Address",
+            "parameters": {
+                "addressId": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
         }
     }
 }
