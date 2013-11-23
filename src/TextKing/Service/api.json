@@ -90,6 +90,29 @@
             }
         },
 
+        "GetProjectLineItems": {
+            "httpMethod": "GET",
+            "uri": "project/{projectId}/line-items",
+            "responseClass": "TextKing\\Model\\LineItemList",
+            "parameters": {
+                "projectId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "perPage": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false,
+                    "sentAs": "per_page"
+                },
+                "page": {
+                    "location": "query",
+                    "type": "integer",
+                    "required": false
+                }
+            }
+        },
+
         "GetJobs": {
             "httpMethod": "GET",
             "uri": "project/{projectId}/jobs",

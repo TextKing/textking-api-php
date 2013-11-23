@@ -144,6 +144,16 @@ class Service {
 
     /**
      * @param string $projectId
+     * @return Model\LineItemList
+     */
+    public function getProjectLineItems($projectId)
+    {
+        return $this->executeCommand('GetProjectLineItems',
+            array('projectId' => $projectId));
+    }
+
+    /**
+     * @param string $projectId
      * @param int $page
      * @param int $perPage
      * @return Model\JobList
