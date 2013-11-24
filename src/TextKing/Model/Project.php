@@ -72,7 +72,7 @@ class Project extends AbstractModel implements \Guzzle\Common\ToArrayInterface
     private $affiliateId;
 
     /** @var string */
-    private $billingAddress;
+    private $billingAddressId;
 
     /**
      * @param string $json
@@ -98,7 +98,7 @@ class Project extends AbstractModel implements \Guzzle\Common\ToArrayInterface
         $object->discountCustomer = (float)$json['discount_customer'];
         $object->discountProject = (float)$json['discount_project'];
         $object->affiliateId = (string)$json['affiliate_id'];
-        $object->billingAddress = (string)$json['billing_address'];
+        $object->billingAddressId = (string)$json['billing_address'];
         return $object;
     }
 
@@ -115,7 +115,7 @@ class Project extends AbstractModel implements \Guzzle\Common\ToArrayInterface
             'state' => $this->state,
             'coupon_name' => $this->couponName,
             'affiliate_id' => $this->affiliateId,
-            'billing_address' => $this->billingAddress,
+            'billing_address' => $this->billingAddressId,
         );
     }
 
@@ -264,19 +264,19 @@ class Project extends AbstractModel implements \Guzzle\Common\ToArrayInterface
     }
 
     /**
-     * @param string $billingAddress
+     * @param string $billingAddressId
      */
-    public function setBillingAddress($billingAddress)
+    public function setBillingAddressId($billingAddressId)
     {
-        $this->billingAddress = $billingAddress;
+        $this->billingAddressId = $billingAddressId;
     }
 
     /**
      * @return string
      */
-    public function getBillingAddress()
+    public function getBillingAddressId()
     {
-        return $this->billingAddress;
+        return $this->billingAddressId;
     }
 
 }

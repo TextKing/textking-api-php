@@ -52,7 +52,7 @@ class Job extends AbstractModel implements \Guzzle\Common\ToArrayInterface
     private $quality;
 
     /** @var string */
-    private $topic;
+    private $topicId;
 
     /** @var string */
     private $briefing;
@@ -85,7 +85,7 @@ class Job extends AbstractModel implements \Guzzle\Common\ToArrayInterface
         $object->sourceLanguage = (string)$json['source_language'];
         $object->targetLanguage = (string)$json['target_language'];
         $object->quality = (string)$json['quality'];
-        $object->topic = (string)$json['topic'];
+        $object->topicId = (string)$json['topic'];
         $object->briefing = (string)$json['briefing'];
         $object->state = (string)$json['state'];
         $object->words = (string)$json['words'];
@@ -107,7 +107,7 @@ class Job extends AbstractModel implements \Guzzle\Common\ToArrayInterface
             'source_language' => $this->sourceLanguage,
             'target_language' => $this->targetLanguage,
             'quality' => $this->quality,
-            'topic' => $this->topic,
+            'topic' => $this->topicId,
             //'state' => $this->state,
             'briefing' => $this->briefing,
             'is_active' => $this->isActive,
@@ -195,19 +195,19 @@ class Job extends AbstractModel implements \Guzzle\Common\ToArrayInterface
     }
 
     /**
-     * @param string $topic
+     * @param string $topicId
      */
-    public function setTopic($topic)
+    public function setTopicId($topicId)
     {
-        $this->topic = $topic;
+        $this->topicId = $topicId;
     }
 
     /**
      * @return string
      */
-    public function getTopic()
+    public function getTopicId()
     {
-        return $this->topic;
+        return $this->topicId;
     }
 
     /**
