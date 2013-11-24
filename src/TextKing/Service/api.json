@@ -443,7 +443,67 @@
             "parameters": {
                 "code": {
                     "location": "uri",
+                    "type": "string",
                     "required": true
+                }
+            }
+        },
+
+        "GetPriceInfoForWordCount": {
+            "httpMethod": "GET",
+            "uri": "price-info",
+            "responseClass": "TextKing\\Model\\PriceInfo",
+            "parameters": {
+                "words": {
+                    "location": "uri",
+                    "type": "integer",
+                    "required": true
+                },
+                "source_language": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "target_language": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "topic": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": false
+                }
+            }
+        },
+        "GetPriceInfoForDocument": {
+            "httpMethod": "POST",
+            "uri": "price-info",
+            "responseClass": "TextKing\\Model\\PriceInfo",
+            "parameters": {
+                "contentType": {
+                    "location": "header",
+                    "sentAs": "Content-Type",
+                    "required": true
+                },
+                "stream": {
+                    "location": "body",
+                    "required": true
+                },
+                "source_language": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "target_language": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "topic": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": false
                 }
             }
         },

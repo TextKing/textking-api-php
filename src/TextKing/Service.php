@@ -394,6 +394,43 @@ class Service {
     }
 
     /**
+     * @param int $words
+     * @param string $sourceLanguage
+     * @param string $targetLanguage
+     * @param string $topicId
+     * @return Model\PriceInfo
+     */
+    public function getPriceInfoForWordCount($words, $sourceLanguage, $targetLanguage, $topicId = null)
+    {
+        return $this->executeCommand('GetPriceInfoForWordCount',
+            array(
+                'words' => $words,
+                'source_language' => $sourceLanguage,
+                'target_language' => $targetLanguage,
+                'topic' => $topicId
+            ));
+    }
+
+    /**
+     * @param Model\Document $document
+     * @param string $sourceLanguage
+     * @param string $targetLanguage
+     * @param string $topicId
+     * @return Model\PriceInfo
+     */
+    public function getPriceInfoForDocument(Model\Document $document, $sourceLanguage, $targetLanguage, $topicId = null)
+    {
+        return $this->executeCommand('GetPriceInfoForDocument',
+            array(
+                'contentType' => $document->getContentType(),
+                'stream' => $document->getStream(),
+                'source_language' => $sourceLanguage,
+                'target_language' => $targetLanguage,
+                'topic' => $topicId
+            ));
+    }
+
+    /**
      * @param int $page
      * @param int $perPage
      * @return Model\AddressList
