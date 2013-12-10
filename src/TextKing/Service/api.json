@@ -260,7 +260,7 @@
             }
         },
 
-        "GetJobCallbackss": {
+        "GetJobCallbacks": {
             "httpMethod": "GET",
             "uri": "project/{projectId}/job/{jobId}/callbacks",
             "responseClass": "TextKing\\Model\\CallbackList",
