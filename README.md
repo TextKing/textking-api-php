@@ -38,7 +38,7 @@ The recommended way to install the TEXTKING API is through
 curl -sS https://getcomposer.org/installer | php
 
 # Add TEXTKING API as a dependency
-php composer.phar require textking/api:~1.0
+php composer.phar require textking/api:~0.1
 ```
 
 This will install the TEXTKING API and its dependencies into your project.
@@ -48,7 +48,6 @@ After installing, you need to require Composer's autoloader:
 ```php
 require 'vendor/autoload.php';
 ```
-
 
 Usage
 -----
