@@ -10,7 +10,13 @@ the TEXTKING translation agency.
 
 Features
 --------
-TODO
+
+* Get information about your prepared, running and completed translation projects.
+* Create and commission new translation projects
+* Upload documents for translation in various file formats
+* Perform a cost analysis for uploaded documents
+* Get informed about the state of a translation in progress
+* Download the translated documents
 
 
 Requirements
@@ -46,4 +52,55 @@ require 'vendor/autoload.php';
 
 Usage
 -----
-TODO
+
+The following example demonstrates how you can use the TEXTKING API to
+submit a text for translation.
+
+```php
+<?php
+require __DIR__ . '/../vendor/autoload.php';
+
+use TextKing\Model\Project;
+use TextKing\Model\Job;
+use TextKing\Model\Document;
+
+// This is your OAuth 2 access token
+// See https://github.com/TextKing/textking-api/wiki/Authorization-and-authentication
+define("API_ACCESS_TOKEN", "youraccesstoken");
+
+// Create a new service instance
+$service = new Service(API_ACCESS_TOKEN);
+
+// Create a new translation project
+$project = new Project();
+$project->setName("My translation project");
+$project = $service->createProject($project);
+
+// Now add a new translation job English to German to the project.
+// A project can have multiple jobs.
+$job = new Job();
+$job->setName("My translation job");
+$job->setSourceLanguage("en");
+$job->setTargetLanguage("de");
+$job->setQuality(Job::QUALITY_TRANSLATION);
+$job = $this->service->createJob($project->getId(), $job);
+
+// We have to upload the text to translate to the job.
+// This could be a file stream, but in this example we just
+// use some plain text.
+$text = "In another moment down went Alice after it, never once considering how in the world she was to get out again.";
+$document = Document::createFromString($text);
+$this->service->uploadDocument($project->getId(), $job->getId(), $document);
+
+// Now get an updated version of the project to see the pricing.
+$project = $service->getProject($project->getId());
+echo "Net price: " . $project->getNetPrice() . " " . $project->getCurrency() . "\n"
+echo "VAT: " . $project->getVat() . " " . $project->getCurrency() . "\n"
+echo "Expected delivery date: " . $project->getDueDate() . "\n"
+
+// To actually order the translation we have to start the project by
+// setting it's state "running".
+// PLEASE NOTE: You will be charged for the translation once you do this.
+// $project->setState(Project::STATE_RUNNING);
+// $project = $this->service->updateProject($project->getId(), $project);
+```
