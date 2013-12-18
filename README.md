@@ -22,7 +22,7 @@ Features
 Requirements
 ------------
 
-* PHP >= 5.3
+* PHP >= 5.3.3
 * [Guzzle](http://docs.guzzlephp.org/en/latest/index.html)
 * [Composer](http://getcomposer.org)
 
