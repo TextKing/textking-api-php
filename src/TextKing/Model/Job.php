@@ -32,6 +32,10 @@ class Job extends AbstractModel implements \Guzzle\Common\ToArrayInterface
     const STATE_REVISION_REQUESTED = 'revision-requested';
     const STATE_COMPLETED = 'completed';
     const STATE_CANCELED = 'canceled';
+    
+    const QUALITY_BASIC = 'basic';
+    const QUALITY_TRANSLATION = 'translation';
+    const QUALITY_TRANSLATION_AND_CORRECTION = 'translation-and-correction';
 
     /** @var string */
     private $id;
